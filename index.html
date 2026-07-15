@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberShield Gatekeeper Terminal - Secure Login Portal</title>
+    <!-- Style References -->
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <!-- Background System Containers -->
+    <div class="bg-container">
+      <div class="cyber-grid" id="cyber-grid"></div>
+      <div class="ambient-glow glow-1"></div>
+      <div class="ambient-glow glow-2"></div>
+      <canvas id="bg-canvas"></canvas>
+    </div>
+
+    <!-- Glowing Vector Circuit Ornaments (Left Side) -->
+    <svg class="circuit-svg circuit-left" viewBox="0 0 100 200" aria-hidden="true">
+      <path d="M 0,20 H 40 L 60,40 V 80 L 80,100 H 100 M 0,60 H 30 L 45,75 V 110 M 0,130 H 20 L 40,150 H 70 L 85,165 V 200" />
+      <circle cx="60" cy="40" r="2" />
+      <circle cx="80" cy="100" r="2.5" />
+      <circle cx="45" cy="75" r="2" />
+      <circle cx="70" cy="150" r="2" />
+    </svg>
+
+    <!-- Glowing Vector Circuit Ornaments (Right Side) -->
+    <svg class="circuit-svg circuit-right" viewBox="0 0 100 200" aria-hidden="true">
+      <path d="M 100,30 H 60 L 40,50 V 90 L 20,110 H 0 M 100,80 H 70 L 55,95 V 130 M 100,150 H 80 L 60,170 H 30 L 15,185 V 200" />
+      <circle cx="40" cy="50" r="2.5" />
+      <circle cx="20" cy="110" r="2" />
+      <circle cx="55" cy="95" r="2" />
+      <circle cx="30" cy="170" r="2" />
+    </svg>
+
+    <!-- Header Section (Brand + Terminal Status) -->
+    <header id="header-logo">
+      <div class="header-left">
+        <div class="shield-logo">
+          <svg class="logo-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="12 8 12 12 15 15"></polyline>
+            <circle cx="12" cy="12" r="9" stroke-dasharray="2 3" opacity="0.6"></circle>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <h1 class="logo-text">CYBERSHIELD<span class="text-cyan">AWARENESS</span></h1>
+        </div>
+      </div>
+      <div class="header-right">
+        <p class="status-line font-bold uppercase">SOC Status: <span class="status-value cyan">Operational</span></p>
+        <p class="status-line-sub">Threat Level: <span class="status-value emerald">Low</span></p>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main id="main-content">
+      <div class="main-layout-grid">
+        <!-- Left Side: Immersive Hero Branding & Layout -->
+        <div class="hero-brand-section">
+          <h2 class="hero-title uppercase">
+            STAY SAFE.<br/>
+            STAY AWARE.<br/>
+            <span class="text-cyan">STAY SECURE.</span>
+          </h2>
+          <p class="hero-desc">
+            Enter the next generation of enterprise security awareness training. Protected by the CyberShield SOC Framework.
+          </p>
+          <div class="hero-stats">
+            <div class="avatar-stack">
+              <div class="avatar av-1">JD</div>
+              <div class="avatar av-2">AS</div>
+              <div class="avatar av-3">MK</div>
+            </div>
+            <p class="stats-text">Join <span class="highlight-white">12,400+</span> professionals worldwide.</p>
+          </div>
+        </div>
+
+        <!-- Right Side: Beautiful Glassmorphism Login Terminal -->
+        <div class="login-card-section">
+          <div class="login-card-wrapper">
+            <div class="login-card">
+              <!-- Corner Cyber Decorations -->
+              <div class="card-corner corner-tl"></div>
+              <div class="card-corner corner-tr"></div>
+              <div class="card-corner corner-bl"></div>
+              <div class="card-corner corner-br"></div>
+
+              <!-- Simulation Loading Overlay -->
+              <div class="form-loader-overlay" id="loader-overlay">
+                <div class="cyber-spinner"></div>
+                <p class="loader-status" id="loader-status">Initializing decryption...</p>
+              </div>
+
+              <div class="card-title-group">
+                <h3 class="card-title">Access Command Center</h3>
+                <p class="card-subtitle">Credential or identity authorization required</p>
+              </div>
+
+              <!-- Interactive Login Form -->
+              <form id="login-form" novalidate>
+                <!-- Email Input Group -->
+                <div class="form-group">
+                  <label class="input-meta-label">Corporate Identity</label>
+                  <div class="input-wrapper">
+                    <input 
+                      type="email" 
+                      id="email-input" 
+                      class="form-input" 
+                      placeholder="e.g. user@cybershield.com" 
+                      required 
+                      autocomplete="username" 
+                    />
+                    <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Password Input Group -->
+                <div class="form-group">
+                  <div class="input-meta-header">
+                    <label class="input-meta-label">Access Key</label>
+                    <a href="#" class="forgot-password-link" id="link-forgot" onclick="event.preventDefault(); showNotification('Password recovery is disabled in sandbox mode.', 'error');">Lost Key?</a>
+                  </div>
+                  <div class="input-wrapper">
+                    <input 
+                      type="password" 
+                      id="password-input" 
+                      class="form-input" 
+                      placeholder="Enter security passphrase" 
+                      required 
+                      autocomplete="current-password" 
+                    />
+                    <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <!-- Show/Hide Password Toggle Button -->
+                    <button type="button" id="password-toggle" class="password-toggle-btn" aria-label="Toggle password visibility">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Form Options (Remember Me / Persistent session) -->
+                <div class="form-options">
+                  <label class="remember-me-label" id="label-remember">
+                    <input type="checkbox" id="remember-me" class="remember-me-checkbox" />
+                    <span class="custom-checkbox"></span>
+                    Persistent Session
+                  </label>
+                </div>
+
+                <!-- Main Submit Action Button -->
+                <button type="submit" class="btn-login" id="btn-submit">
+                  <span class="btn-login-text">Initialize Login</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                  <span class="btn-login-glow"></span>
+                </button>
+              </form>
+
+              <!-- Divider -->
+              <div class="separator">
+                <div class="separator-line"></div>
+                <span class="separator-text">External Protocol</span>
+                <div class="separator-line"></div>
+              </div>
+
+              <!-- Social Oauth Quick Buttons -->
+              <div class="social-grid">
+                <button class="social-btn google" id="google-login" type="button">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  </svg>
+                  <span>Google</span>
+                </button>
+                <button class="social-btn github" id="github-login" type="button">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                  </svg>
+                  <span>GitHub</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer System (Prisitne Split Advisory & Meta Links) -->
+    <footer id="footer-system">
+      <div class="footer-split-container">
+        <!-- Advisory box matching theme mockup placement -->
+        <div class="safety-tip-container" id="tip-box">
+          <div class="safety-tip-indicator">
+            <svg class="safety-tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <div class="safety-tip-text-block">
+            <p class="safety-tip-header-text">Cyber Safety Tip of the Day</p>
+            <p class="safety-tip-text" id="safety-tip-text">Loading daily advisory feed...</p>
+          </div>
+        </div>
+
+        <!-- Links and version control information -->
+        <div class="footer-meta-block">
+          <div class="footer-links">
+            <a href="#" class="footer-link" onclick="event.preventDefault(); showNotification('Privacy Directive is encrypted under internal protocols.', 'info');">Privacy Policy</a>
+            <a href="#" class="footer-link" onclick="event.preventDefault(); showNotification('Terms of Authorization: Standard Zero-Trust SOC terms apply.', 'info');">Terms of Service</a>
+            <a href="#" class="footer-link" onclick="event.preventDefault(); showNotification('SOC Support Desk: hq-admin@cybershield.internal', 'info');">Contact Support</a>
+          </div>
+          <p class="system-copyright">
+            System Version: v4.2.0-SECURE-STABLE &copy; 2026 CyberShield Awareness Inc.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Notification Toast Container -->
+    <div id="notification-container" style="position: fixed; top: 24px; right: 24px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; pointer-events: none;"></div>
+
+    <!-- Core Logic Reference -->
+    <script type="module" src="/js/login.js"></script>
+  </body>
+</html>
